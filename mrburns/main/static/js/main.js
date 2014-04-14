@@ -93,15 +93,21 @@ $(document).ready(function () {
 
     function centerModal() {
         $(this).css('display', 'block');
+
+        var footerHeight = 0;
+        if ($(this).hasClass('choice-modal')) {
+            footerHeight = 150;
+        }
+
         var $dialog = $(this).find('.modal-dialog');
         var offset = Math.max(
             // 150 pixels to approximately account for share buttons
-            ($(window).height() - $dialog.height() - 150) / 2,
+            ($(window).height() - $dialog.height() - footerHeight) / 2,
             20
         );
         $dialog.css('margin-top', offset);
     }
-    $('.choice-modal').on('show.bs.modal', centerModal);
+    $('.modal').on('show.bs.modal', centerModal);
 
     var hash = window.location.hash;
 
